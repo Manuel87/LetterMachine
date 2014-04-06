@@ -72,7 +72,7 @@ Just hit "Create" again
 
 
 The original script I developed two years ago and finally decided to make public / opensource. 
-Until now I only used it for my own needs of font preproduciton … 
+Until now I only used it for my own needs of font preproduciton … //ToDo: Especially the code should get cleaned up …
 
 
 some actual fonts which could benefit -> http://www.youworkforthem.com/vectors/handset-type (I think they come as svgs > import > name > go :)
