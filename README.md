@@ -4,6 +4,7 @@ Illustrator - Type Setting Extension for Symbol Fonts / Font Production
 Several scripts to simplify the work with symbolfonts in Illustrator.
 So it is either for the development of ne new fonts or just to set already existing symbolfonts or so called handset type. 
 
+![alt tag](illustrator_plugin_lettermachine_preview.png)
 
 
 #Current Features
@@ -25,7 +26,6 @@ ADDITIONAL FEATURES
 - Color (b/w pngs / …) 
 - Blendmode
 
-![alt tag](illustrator_plugin_lettermachine_preview.png)
 
 
 #INSTALLATION
