@@ -71,11 +71,11 @@ Just hit "Create" again
 //ToDo: preview video
 
 
-The original script I developed two years ago and now decided to make public / opensource. 
-Until now I only used it for my own needs of font preproduciton… so actually I wasn’t able yet to test it with an existing symbol font.
+The original script I developed two years ago and finally decided to make public / opensource. 
+Until now I only used it for my own needs of font preproduciton … 
 
 
-some actual fonts -> http://www.youworkforthem.com/vectors/handset-type (I think they come as svgs > import > name > go :)
+some actual fonts which could benefit -> http://www.youworkforthem.com/vectors/handset-type (I think they come as svgs > import > name > go :)
 
 
 Lisence: GNU GENERAL PUBLIC LISENCE
