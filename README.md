@@ -25,6 +25,7 @@ ADDITIONAL FEATURES
 - Color (b/w pngs / …) 
 - Blendmode
 
+![alt tag](illustrator_plugin_lettermachine_preview.png)
 
 
 #INSTALLATION
