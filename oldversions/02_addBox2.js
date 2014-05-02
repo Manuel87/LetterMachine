@@ -15,9 +15,10 @@ if(document.activeSymbol) {
 
 var components = {
         boxName: { label: 'boxName', value: getSuggestion(document.activeSymbol) + "box" },
-        selectedFont: { label: 'search for', value: getSuggestion(document.activeSymbol) },
-        setWidth: { label: 'set Width', value: true },
-        addWidth: { label: 'add Width', value: 60 }
+       // selectedFont: { label: 'search for', value: getSuggestion(document.activeSymbol) },
+        setWidth: { label: 'Set Sidebearings', value: true },
+        addWidth_left: { label: 'Left', value: 60 },
+        addWidth_right: { label: 'Right', value: 60 }
 			};
 	var values = Dialog.prompt('Rename Symbols: ' + document.activeSymbol.name + ',...' , components);
 
@@ -63,11 +64,15 @@ print("setBox started //////////////");
         if(document.symbols[i].definition.children['Letter']) {
             print("already Letter grouped");
         } else {
+        // get all items
+        var myFirstChild = document.symbols[i].definition.firstChild;
         
         /// create and place Group
         var Letter = new Group();
         Letter.name = "Letter";
         document.symbols[i].definition.appendTop(Letter);
+        document.symbols[i].definition.children['Letter'].appendTop(myFirstChild);
+        
         }
         
         /// put the items inot the Group
@@ -86,7 +91,7 @@ print("setBox started //////////////");
         
         
         ///place Box
-        document.symbols[i].definition.appendTop(placedSymbol);
+        document.symbols[i].definition.appendBottom(placedSymbol);
    
         
 document.symbols[i].definition.children['box'].translate(document.symbols[i].definition.children['Letter'].position);
@@ -97,13 +102,46 @@ document.symbols[i].definition.children['box'].translate(document.symbols[i].def
 
         ///printing names
         }
-        
+        mybox = document.symbols[i].definition.children['box'];
+        myLetter = document.symbols[i].definition.children['Letter']        
                 
-              if(values.setWidth == true && document.symbols[i].definition.children['box']) {
-        var newWidth = document.symbols[i].definition.children['Letter'].controlBounds.width + values.addWidth;
+                
+                
+              if(values.setWidth == true && mybox) {
+              	new_addWidth_left = mybox.controlBounds.height / 1000 * values.addWidth_left;
+              	new_addWidth_right = mybox.controlBounds.height / 1000 * values.addWidth_right;
+              	//print("jj");
+              	//print(mybox.controlBounds.height);
+              	//print(values.addWidth_left);
+              	print(new_addWidth_left);
+              	
+             	//new_addWidth_left = mybox.height / 1000 * values.addWidth_right;
+              	
+              	
+        var noWidth = document.symbols[i].definition.children['Letter'].controlBounds.width;    	
+        var newWidth = noWidth + new_addWidth_left + new_addWidth_right;
           //getScale(Item, variable, NewAmount);
-          newScaleAmount = getScale(document.symbols[i].definition.children['box'], "width", newWidth)
-         document.symbols[i].definition.children['box'].scale(newScaleAmount, 1);
+          
+          
+          // clear right Sidebearings (0)
+          resetnewScaleAmount = getScale(mybox, "width", noWidth)
+          mybox.scale(resetnewScaleAmount, 1, myLetter.strokeBounds.leftCenter);
+          
+          
+          // clear left Sidebearing
+          mybox.position = myLetter.position;
+          
+          // set right Sidebearing
+          newScaleAmount = getScale(mybox, "width", newWidth)
+          mybox.scale(newScaleAmount, 1, myLetter.strokeBounds.leftCenter);
+         
+         
+         
+          //set left Sidebearing
+          mybox.position -= new Point(new_addWidth_left, 0);
+          
+          
+         //mybox.position = document.symbols[i].definition.children['Letter'].position - new Point(values.addWidth_left, 0);
         }    
                 
             }

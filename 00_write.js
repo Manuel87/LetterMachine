@@ -283,7 +283,7 @@ var values = {
 							
 							print("//////////////// i = " + i);
 							
-							values.rootPoint = new Point(textItems[i].bounds.x - textItems[i].bounds.width - 100, textItems[i].bounds.y);
+							values.rootPoint = new Point(textItems[i].bounds.x + textItems[i].bounds.width + textItems[i].bounds.width * 0.01, textItems[i].bounds.y); //- 100
 							writeSymbols(values, textItems[i], GroupCount);
 							
 							
@@ -532,7 +532,9 @@ Linegroup.name = "symbolfont_" + LineGroupCount;
 		        var myBaselineShift = -characters[i].characterStyle.baselineShift;
 		       
 		       //Kerning
-		        var myKerning = values.newHeight / 1000 * characters[i].characterStyle.kerning
+		        //characters[i].characterStyle.kerningType = 'manual';
+		        print("kerning" + characters[i].characterStyle.kerning);
+		        var myKerning = values.newHeight / 1000 * characters[i].characterStyle.kerning;
 		        
 		    } ///END – mainCharacter  / ist there a Symbol?
 		else {
